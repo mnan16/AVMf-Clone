@@ -35,18 +35,23 @@ public class GenerateInputData {
     GenerateInputDataArgsParser argsParser = new GenerateInputDataArgsParser(args);
 
     // instantiate the test object using command line parameters
+    //Instance of either Tri, Line or Cal TestObject.java
     TestObject testObject = argsParser.parseTestObjectParam();
 
     // instantiate the branch using command line parameters
+    //target = Branch(8,T)
     Branch target = argsParser.parseBranchParam(testObject);
 
     // set up the local search, which can be overridden at the command line
+    //Hill Climb
     LocalSearch localSearch = argsParser.parseSearchParam(SEARCH_NAME);
 
     // set up the objective function
+    //TriBranchTargetObjFn(Branch(8,T), getControlDependencies())
     ObjectiveFunction objFun = testObject.getObjectiveFunction(target);
 
     // set up the vector
+    //Empty Vector; Tri:3 vars
     Vector vector = testObject.getVector();
 
     // set up the termination policy
@@ -55,6 +60,7 @@ public class GenerateInputData {
 
     // set up random initialization of vectors
     RandomGenerator randomGenerator = new MersenneTwister();
+    //Random generator obj
     Initializer initializer = new RandomInitializer(randomGenerator);
 
     // set up the AlternatingVariableMethod
@@ -120,6 +126,7 @@ public class GenerateInputData {
         String suppliedParam = args[BRANCH_PARAM_INDEX];
 
         try {
+          //Node:8 ; Edge:True
           branch = Branch.instantiate(suppliedParam, testObject);
         } catch (Exception exception) {
           error(exception.getMessage());

@@ -55,6 +55,7 @@ public class Branch {
 
   public static Branch instantiate(String id, TestObject testObject) {
     if (id.length() >= 2) {
+      //True or False
       String edgeCharacter = id.substring(id.length() - 1, id.length());
 
       boolean gotEdge = false;
@@ -69,11 +70,13 @@ public class Branch {
       }
 
       if (gotEdge) {
+        //Numeric Branch ID
         String nodeString = id.substring(0, id.length() - 1);
         try {
           int node = Integer.parseInt(nodeString);
 
           boolean validNode = node >= 1;
+          //Tri:8, Line:7, Cal:23
           System.out.println(testObject.getNumBranchingNodes());
           if (testObject != null && node > testObject.getNumBranchingNodes()) {
             validNode = false;

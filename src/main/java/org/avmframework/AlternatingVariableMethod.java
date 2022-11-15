@@ -90,6 +90,7 @@ public class AlternatingVariableMethod {
 
     // initialize the vector
     this.vector = vector;
+    //Vars set to Random Val
     initializer.initialize(vector);
 
     // is there anything to optimize?
@@ -127,6 +128,7 @@ public class AlternatingVariableMethod {
    */
   protected void alternatingVariableSearch(AbstractVector abstractVector)
       throws TerminationException {
+    //Evaluate ObjFN based on 
     ObjectiveValue lastImprovement = objFun.evaluate(vector);
     int nonImprovement = 0;
 
